@@ -15,33 +15,34 @@ When(/^I click the Adopt Me button$/) do
   @cart = ShoppingCartPage.new(@browser)
 end
 
-
 When(/^I click the Adopt Another Puppy button$/) do
-  @browser.button(:value => 'Adopt Another Puppy').click
+  @cart.continue_shopping
 end
 
 When(/^I click the Complete the Adoption button$/) do
-  @browser.button(:value => 'Complete the Adoption').click
+  @cart.proceed_to_checkout
+  @checkout = CheckoutPage.new(@browser)
+
 end
 
 When(/^I enter "(.*?)" in the name field$/) do |name|
-  @browser.text_field(:id => 'order_name').set(name)
+  @checkout.name = name
 end
 
-When(/^I enter "(.*?)" in the address field$/) do |arg1|
-  @browser.text_field(:id => 'order_address').set(arg1)
+When(/^I enter "(.*?)" in the address field$/) do |address|
+  @checkout.address = address
 end
 
-When(/^I enter "(.*?)" in the email field$/) do |arg1|
-  @browser.text_field(:id => 'order_email').set(arg1)
+When(/^I enter "(.*?)" in the email field$/) do |email|
+  @checkout.email = email
 end
 
-When(/^I select "(.*?)" from the pay with dropdown$/) do |arg1|
-  @browser.select_list(:id => 'order_pay_type').select(arg1)
+When(/^I select "(.*?)" from the pay with dropdown$/) do |pay_type|
+  @checkout.pay_type = pay_type
 end
 
 When(/^I click the Place Order button$/) do
-  @browser.button(:value => 'Place Order').click
+  @checkout.place_order
 end
 
 Then(/^I should see "(.*?)"$/) do |expected|
