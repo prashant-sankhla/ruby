@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-gem 'cucumber'
-gem 'rspec'
-gem 'rake'
-gem 'page-object'
+gem 'cucumber', '1.3.1'
+gem 'rspec', '2.12.0'
+gem 'rake', '0.9.2.2'
+gem 'page-object', '0.9.2'
